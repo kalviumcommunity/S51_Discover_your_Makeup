@@ -9,4 +9,4 @@ const makeupSchema=new mongoose.Schema({
         timestamp:true
     })
 
-    module.export=mongoose.model('MakeUp',makeupSchema)  
+    module.exports=mongoose.model('MakeUp',makeupSchema)  

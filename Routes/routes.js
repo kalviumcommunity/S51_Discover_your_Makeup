@@ -1,13 +1,13 @@
-const express = require('express')
+const express = require('express');
 const getRouter = express.Router();
 const postRouter = express.Router();
 const putRouter = express.Router();
 const deleteRouter = express.Router();
-const Makeup = require("../models/makeup.model")
+const MakeUps = require("../models/makeup.model")
 
-getRouter.get('/getallmakeup',async (req, res) => {
+getRouter.get('/getallmakeup', async (req, res) => {
     try{
-        const makeup = await Makeup.find();
+        const makeup = await MakeUps.find();
         res.status(200).json(makeup);
     } catch(err){
         console.log(err);
@@ -19,7 +19,8 @@ getRouter.get('/getallmakeup',async (req, res) => {
 
 getRouter.get('/getmakeup/:id',async (req, res) => {
     try{
-        const makeup = await Makeup.findone({Brand:query});
+        const {id}= req.params;
+        const makeup = await MakeUps.findone({Brand : id});
         res.status(200).json(makeup);
     } catch(err){
         console.log(err);
@@ -32,7 +33,7 @@ getRouter.get('/getmakeup/:id',async (req, res) => {
 postRouter.post('/addmakeup',async (req, res) => {
     try{
         let{ProductId,Brand,FamousProduct,ProductURL,ProductRating} = req.body;
-        const makeup = await Makeup.create({ProductId,Brand,FamousProduct,ProductURL,ProductRating});
+        const makeup = await MakeUps.create({ProductId,Brand,FamousProduct,ProductURL,ProductRating});
         res.status(201).json(makeup);
     } catch(err){
         console.log(err);
@@ -44,8 +45,9 @@ postRouter.post('/addmakeup',async (req, res) => {
 
 putRouter.patch('/updatemakeup/:id',async (req, res) => {
     try {
+        const {id}= req.params;
         let{ProductId,Brand,FamousProduct,ProductURL,ProductRating} = req.body;
-        const makeup = await Makeup.update({ProductId,Brand,FamousProduct,ProductURL,ProductRating});
+        const makeup = await MakeUps.findOneAndUpdate({Brand : id},{ProductId,Brand,FamousProduct,ProductURL,ProductRating});
         res.status(200).json(makeup);
     }catch(err){
         console.log(err);
@@ -57,7 +59,8 @@ putRouter.patch('/updatemakeup/:id',async (req, res) => {
 
 deleteRouter.delete('/deletemakeup/:id',async (req, res) => {
     try {
-        const makeup= await Makeup.delete({Brand});
+        const {id}= req.params;
+        const makeup = await MakeUps.findOneAndDelete({Brand : id});
         res.status(200).json(makeup);
     }catch(err){
         console.log(err);
