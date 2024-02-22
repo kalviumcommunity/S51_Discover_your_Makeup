@@ -33,7 +33,9 @@ getRouter.get('/getmakeup/:id',async (req, res) => {
 postRouter.post('/addmakeup',async (req, res) => {
     try{
         let{ProductId,Brand,FamousProduct,ProductURL,ProductRating} = req.body;
+
         const makeup = await MakeUps.create({ProductId,Brand,FamousProduct,ProductURL,ProductRating});
+
         res.status(201).json(makeup);
     } catch(err){
         console.log(err);
@@ -48,6 +50,7 @@ putRouter.patch('/updatemakeup/:id',async (req, res) => {
         const {id}= req.params;
         let{ProductId,Brand,FamousProduct,ProductURL,ProductRating} = req.body;
         const makeup = await MakeUps.findOneAndUpdate({Brand : id},{ProductId,Brand,FamousProduct,ProductURL,ProductRating});
+
         res.status(200).json(makeup);
     }catch(err){
         console.log(err);
