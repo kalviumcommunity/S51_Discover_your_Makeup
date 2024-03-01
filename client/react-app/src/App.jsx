@@ -1,15 +1,14 @@
-import React from 'react'
 import './App.css'
-import Makeup from './Components/Makeup'
- 
+import AllRoutes from './AllRoutes'
+import { BrowserRouter } from 'react-router-dom'
 
 function App() {
-  // const [count, setCount] = useState
 
   return (
     <>
-      <h1>Makeup</h1>
-      <Makeup />
+    <BrowserRouter>
+      <AllRoutes />
+    </BrowserRouter>
     </>
   )
 }

@@ -22,6 +22,7 @@
 // export default Makeup;
 import React, { useState, useEffect } from "react";
 import "../App.css"; 
+import {Link} from 'react-router-dom'
 
 function Makeup() {
     const [product, setProduct] = useState([]);
@@ -42,6 +43,7 @@ function Makeup() {
 
     return (
         <div className="makeup-container">
+            <Link to='/add'><button>Add</button></Link>
             {product.map((data, index) => (
                 <div key={index} className="makeup-item">
                     <h1 className="product-id">Product-Id={data.ProductId}</h1>
