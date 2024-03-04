@@ -1,10 +1,10 @@
 const mongoose =require("mongoose")
 const makeupSchema=new mongoose.Schema({
-    ProductId:{type:Number},
+    ProductId:{type:String},
     Brand:{type:String},  
     FamousProduct:{type:String},
     ProductURL:{type:String},
-    ProductRating:{type:Number}
+    ProductRating:{type:String}
     },{
         timestamp:true
     })
