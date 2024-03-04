@@ -41,6 +41,24 @@ function Makeup() {
         }
     };
 
+    const handleDelete = async (brand) => {
+        try {
+            const response = await fetch(`https://discover-your-makeup.onrender.com/deletemakeup/${brand}`, {
+                method: 'DELETE'
+            });
+            if (response.ok) {
+                const updatedData = product.filter(item => item.Brand !== brand);
+                setProduct(updatedData);
+                console.log(' item deleted successfully');
+            } else {
+                console.error('Failed to delete  item');
+            }
+        } catch (error) {
+            console.error('Error deleting  item:', error);
+        }
+    };
+    
+
     return (
         <div className="makeup-container">
             <Link to='/add'><button>Add</button></Link>
@@ -51,6 +69,8 @@ function Makeup() {
                     <h1 className="famous-product">FamousProduct={data.FamousProduct}</h1>
                     <h1 className="product-url">ProductURL={data.ProductURL}</h1>
                     <h1 className="product-rating">ProductRating={data.ProductRating}</h1>
+                    <Link to={`/update/${data.Brand}`}><button>Update</button></Link>
+                    <button onClick={(e)=>handleDelete(data.Brand)}>Delete</button>
                     <hr></hr>
                 </div>
             ))}
