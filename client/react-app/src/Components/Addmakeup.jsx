@@ -8,6 +8,7 @@ function Addmakeup() {
     const [FamousProduct,setFamousProduct]=useState("")
     const [ProductURL,setProductURL]=useState("")
     const [ProductRating,setProductRating]=useState("")
+    const [Createdby,setCreatedBy]=useState("")
     const submit=(e)=>{
       e.preventDefault();
         axios.post('https://discover-your-makeup.onrender.com/addmakeup',{
@@ -16,6 +17,7 @@ function Addmakeup() {
           FamousProduct: FamousProduct,
           ProductURL: ProductURL,
           ProductRating: ProductRating,
+          Createdby: Createdby
           })
           
      .then((response) =>{ console.log(response.data);
@@ -45,6 +47,8 @@ function Addmakeup() {
             <input type="text" onChange={(e)=>setProductURL(e.target.value)}/></div>
             <div className='space-around'><label>ProductRating : </label>
             <input type="text" onChange={(e)=>setProductRating(e.target.value)}/></div>
+            <div className='space-around'><label>Creator : </label>
+            <input type="text" onChange={(e)=>setCreatedBy(e.target.value)}/></div>
             <button type="submit">Submit</button>
             </form>
             </div>
