@@ -20,10 +20,7 @@ function LoginPage() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const header = new Headers({"Access-Control-Allow-Origin":"*", 'Content-Type' : '*'})
-            const response = await axios.post('https://foodexplorer-iqox.onrender.com/login',{
-                headers: header,
-                'mode' : "no-cors",
+            const response = await axios.post('https://discover-your-makeup.onrender.com/login', {
                 username,
                 password
             });
@@ -42,7 +39,7 @@ function LoginPage() {
             setError('Something went wrong. Please try again later.');
         }
     };
-
+    
     return (
         <div className="login-container">
             <h2>Login</h2>
