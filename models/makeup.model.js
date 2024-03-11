@@ -4,7 +4,8 @@ const makeupSchema=new mongoose.Schema({
     Brand:{type:String},  
     FamousProduct:{type:String},
     ProductURL:{type:String},
-    ProductRating:{type:String}
+    ProductRating:{type:String},
+    Createdby:{type:String}
     },{
         timestamp:true
     })
