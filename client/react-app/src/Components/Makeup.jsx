@@ -6,14 +6,35 @@ function Makeup() {
     const [product, setProduct] = useState([]);
     const [createdByOptions, setCreatedByOptions] = useState([]);
     const [selectedCreatedBy, setSelectedCreatedBy] = useState('');
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
 
     useEffect(() => {
         fetchMakeup();
+        checkLoginStatus()
     }, []);
+
+    const getCookie = (name) => {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+    };
+
+    const checkLoginStatus = () => {
+        const token = getCookie('token');
+        setIsLoggedIn(!!token);
+    };
+
+    const handleLogout = () => {
+        document.cookie = 'token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        setIsLoggedIn(false);
+        window.location.reload();
+    };
+
+
 
     const fetchMakeup = async () => {
         try {
-            const response = await fetch('http://localhost:3000/getallmakeup');
+            const response = await fetch('https://discover-your-makeup.onrender.com/getallmakeup');
             const productData = await response.json();
             setProduct(productData);
 
@@ -27,7 +48,7 @@ function Makeup() {
 
     const handleDelete = async (brand) => {
         try {
-            const response = await fetch(`http://localhost:3000/deletemakeup/${brand}`, {
+            const response = await fetch(`https://discover-your-makeup.onrender.com/deletemakeup/${brand}`, {
                 method: 'DELETE'
             });
             if (response.ok) {
@@ -53,6 +74,11 @@ function Makeup() {
     return (
         <div className="makeup-container">
             <Link to='/add'><button>Add</button></Link>
+            {isLoggedIn ? (
+                    <button className="logout" onClick={handleLogout}>LOGOUT</button>
+                ) : (
+                    <Link to='/login'><button className="login">LOGIN</button></Link>
+                )}
             <select value={selectedCreatedBy} onChange={handleCreatedByChange}>
                 <option value="">Select Created By</option>
                 {createdByOptions.map((option, index) => (
