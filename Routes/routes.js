@@ -133,7 +133,8 @@ app.get('/logout', (req, res) => {
 
 app.post('/auth', (req, res) => {
     const { username, password } = req.body;
-    const token = jwt.sign({ username: username },process.env.ACCESS_TOKEN);
+    const secretKey =" 92bf306d16c34d6de16cf819a679c0cb00cb797f0b46f8b044e369f017eb2d7b"
+    const token = jwt.sign({ username: username },secretKey);
     res.send({ token });
     res.cookie('token', token);
     
