@@ -15,7 +15,7 @@ function Addmakeup() {
           ProductId:ProductId,
           Brand: Brand,
           FamousProduct: FamousProduct,
-          ProductURL: ProductURL,
+          // ProductURL: ProductURL,
           ProductRating: ProductRating,
           Createdby: Createdby
           })
@@ -43,8 +43,8 @@ function Addmakeup() {
             <input type="text" onChange={(e)=>setBrand(e.target.value)}/></div>
             <div className='space-around'><label>FamousProduct : </label>
             <input type="text" onChange={(e)=>{setFamousProduct(e.target.value)}}/></div>
-            <div className='space-around'><label>ProductURL : </label>
-            <input type="text" onChange={(e)=>setProductURL(e.target.value)}/></div>
+            {/* <div className='space-around'><label>ProductURL : </label>
+            <input type="text" onChange={(e)=>setProductURL(e.target.value)}/></div> */}
             <div className='space-around'><label>ProductRating : </label>
             <input type="text" onChange={(e)=>setProductRating(e.target.value)}/></div>
             <div className='space-around'><label>Creator : </label>

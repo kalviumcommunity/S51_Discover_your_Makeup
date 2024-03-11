@@ -8,7 +8,7 @@ export default function UpdateData() {
     const [productId, setProductId] = useState('');
     const [modelName, setModelName] = useState('');
     const [company, setCompany] = useState('');
-    const [productURL, setProductURL] = useState('');
+    // const [productURL, setProductURL] = useState('');
     const [productRating, setProductRating] = useState(0);
 
     const handleSubmit = async (e) => {
@@ -19,7 +19,7 @@ export default function UpdateData() {
                 ProductId: productId,
                 Brand: company,
                 FamousProduct: modelName,
-                ProductURL: productURL,
+                // ProductURL: productURL,
                 ProductRating: productRating
             }, {
                 headers: {
@@ -55,10 +55,10 @@ export default function UpdateData() {
                         <label htmlFor="Company">Company</label>
                         <input type="text" id="Company" name="Company" value={company} onChange={(e) => setCompany(e.target.value)} />
                     </div>
-                    <div className='div'>
+                    {/* <div className='div'>
                         <label htmlFor="ProductURL">Product URL</label>
                         <input type="text" id="ProductURL" name="ProductURL" value={productURL} onChange={(e) => setProductURL(e.target.value)} />
-                    </div>
+                    </div> */}
                     <div className='div'>
                         <label htmlFor="ProductRating">Product Rating</label>
                         <input type="number" id="ProductRating" name="ProductRating" value={productRating} onChange={(e) => setProductRating(e.target.value)} />

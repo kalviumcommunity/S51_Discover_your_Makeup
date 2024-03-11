@@ -90,7 +90,7 @@ function Makeup() {
                     <h1 className="product-id">Product-Id={data.ProductId}</h1>
                     <h1 className="brand">Brand={data.Brand}</h1>
                     <h1 className="famous-product">FamousProduct={data.FamousProduct}</h1>
-                    <h1 className="product-url">ProductURL={data.ProductURL}</h1>
+                    {/* <h1 className="product-url">ProductURL={data.ProductURL}</h1> */}
                     <h1 className="product-rating">ProductRating={data.ProductRating}</h1>
                     <h1 className="createdby">Creator={data.Createdby}</h1>
                     {isLoggedIn && <Link to={`/update/${data.Brand}`}><button>Update</button></Link>}
