@@ -73,7 +73,7 @@ function Makeup() {
 
     return (
         <div className="makeup-container">
-            <Link to='/add'><button>Add</button></Link>
+            {isLoggedIn && <Link to='/add'><button>Add</button></Link>}
             {isLoggedIn ? (
                     <button className="logout" onClick={handleLogout}>LOGOUT</button>
                 ) : (
@@ -93,8 +93,8 @@ function Makeup() {
                     <h1 className="product-url">ProductURL={data.ProductURL}</h1>
                     <h1 className="product-rating">ProductRating={data.ProductRating}</h1>
                     <h1 className="createdby">Creator={data.Createdby}</h1>
-                    <Link to={`/update/${data.Brand}`}><button>Update</button></Link>
-                    <button onClick={() => handleDelete(data.Brand)}>Delete</button>
+                    {isLoggedIn && <Link to={`/update/${data.Brand}`}><button>Update</button></Link>}
+                    {isLoggedIn && <button onClick={() => handleDelete(data.Brand)}>Delete</button>}
                     <hr></hr>
                 </div>
             ))}
